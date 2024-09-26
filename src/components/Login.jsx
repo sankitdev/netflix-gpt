@@ -1,6 +1,11 @@
 import { useState, useRef } from "react";
 import FormValidation from "../utils/FormValidation.js";
 import Button from "./ui/Button";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase.js";
 const Login = () => {
   const [signUp, setSignUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -17,9 +22,39 @@ const Login = () => {
       email.current.value,
       pass.current.value
     );
-
     setErrorMessage(message);
-    console.log(message);
+    if (message !== null) return;
+    if (signUp && message === null) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        pass.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode + " " + errorMessage);
+          setErrorMessage(errorCode + " " + errorMessage);
+        });
+    } else {
+      signInWithEmailAndPassword(auth, email.current.value, pass.current.value)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode + " " + errorMessage);
+          setErrorMessage(errorCode + " " + errorMessage);
+        });
+    }
   };
   return (
     <div className="relative mx-auto top-20 w-96 p-16 bg-black bg-opacity-50">
