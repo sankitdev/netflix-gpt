@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 const Button = ({ styles, text, onClick }) => {
   return (
-    <button onClick={onClick} className={`bg-red-600 rounded-md ${styles}`}>
+    <button
+      onClick={onClick}
+      className={`bg-red-600 rounded-md hover:bg-red-700 ${styles}`}
+    >
       {text}
     </button>
   );
