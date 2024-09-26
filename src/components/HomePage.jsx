@@ -1,3 +1,6 @@
+import Button from "./ui/Button";
+import { Link } from "react-router-dom";
+
 const HomePage = () => {
   return (
     <div className="px-15 relative top-1/4 md:top-1/3 z-10 mx-auto text-center w-full md:w-3/4 xl:w-1/2 md:py-4 ">
@@ -8,9 +11,12 @@ const HomePage = () => {
       <h3 className="mt-3 md:mt-5 ">
         Ready to watch? Enter your email to create or restart your membership.
       </h3>
-      <button className="mt-4 px-6 py-2 text-lg font-bold bg-red-600 rounded-md">
-        Get Started {">"}{" "}
-      </button>
+      <Link to={"/login"}>
+        <Button
+          styles={"mt-4 px-6 py-2 text-lg font-bold"}
+          text={"Get Started >"}
+        />
+      </Link>
     </div>
   );
 };
