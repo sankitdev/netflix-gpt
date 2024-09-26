@@ -1,14 +1,12 @@
 import { useState, useRef } from "react";
 import FormValidation from "../utils/FormValidation.js";
 import Button from "./ui/Button";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { auth } from "../utils/firebase.js";
+import HandleLogin from "../utils/HandleLogin.js";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [signUp, setSignUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
   const toggleSignUp = () => {
     setSignUp(!signUp);
   };
@@ -24,40 +22,10 @@ const Login = () => {
     );
     setErrorMessage(message);
     if (message !== null) return;
-    if (signUp && message === null) {
-      createUserWithEmailAndPassword(
-        auth,
-        email.current.value,
-        pass.current.value
-      )
-        .then((userCredential) => {
-          // Signed up
-          const user = userCredential.user;
-          console.log(user);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode + " " + errorMessage);
-          setErrorMessage(errorCode + " " + errorMessage);
-        });
-    } else {
-      signInWithEmailAndPassword(auth, email.current.value, pass.current.value)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          console.log(user);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode + " " + errorMessage);
-          setErrorMessage(errorCode + " " + errorMessage);
-        });
-    }
+    HandleLogin(signUp, setErrorMessage, message, email, pass, navigate);
   };
   return (
-    <div className="relative mx-auto top-20 w-96 p-16 bg-black bg-opacity-50">
+    <div className="relative mx-auto top-36 w-4/5 lg:w-2/5 p-10 md:p-16  bg-black bg-opacity-50">
       <h1 className="text-4xl font-bold mb-5">
         {signUp ? "Sign Up" : "Sign In"}
       </h1>
@@ -83,11 +51,13 @@ const Login = () => {
           className="py-3 border-2 border-slate-300 bg-black bg-opacity-60 px-5"
         />
         <p className="text-red-600">{errorMessage}</p>
-        <Button styles="py-2" text="Sign In" />
-        <p>
-          <span className="text-gray-300">New to Netflix? </span>
-          <span className="cursor-pointer" onClick={toggleSignUp}>
-            Sign up now
+        <Button styles="py-2" text={signUp ? "Sign Up" : "Sign In"} />
+        <p onClick={toggleSignUp}>
+          <span className="text-gray-300">
+            {!signUp ? "New to Netflix? " : " Already a User? "}
+          </span>
+          <span className="cursor-pointer">
+            {!signUp ? "Sign up now" : " Sign In"}
           </span>
         </p>
       </form>
