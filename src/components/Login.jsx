@@ -2,11 +2,9 @@ import { useState, useRef } from "react";
 import FormValidation from "../utils/FormValidation.js";
 import Button from "./ui/Button";
 import HandleLogin from "../utils/HandleLogin.js";
-import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [signUp, setSignUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const toggleSignUp = () => {
     setSignUp(!signUp);
   };
@@ -22,7 +20,7 @@ const Login = () => {
     );
     setErrorMessage(message);
     if (message !== null) return;
-    HandleLogin(signUp, setErrorMessage, message, email, pass, navigate);
+    HandleLogin(signUp, setErrorMessage, message, email, pass);
   };
   return (
     <div className="relative mx-auto top-36 w-4/5 lg:w-2/5 p-10 md:p-16  bg-black bg-opacity-50">
