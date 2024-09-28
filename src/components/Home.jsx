@@ -1,4 +1,4 @@
-import { bgImg } from "../Images";
+import { bgImg } from "../utils/Constant";
 import Header from "./Header";
 import HomePage from "./HomePage";
 import { useLocation } from "react-router-dom";

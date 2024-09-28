@@ -1,4 +1,4 @@
-import { ErrorImg } from "../utils/Images";
+import { ErrorImg } from "../utils/Constant";
 import Button from "./ui/Button";
 import { Link } from "react-router-dom";
 
