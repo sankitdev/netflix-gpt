@@ -1,5 +1,7 @@
 export const url =
   "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&region=IN";
+export const Video_URL =
+  "https://api.themoviedb.org/3/movie/1062215/videos?language=en-US";
 export const options = {
   method: "GET",
   headers: {
