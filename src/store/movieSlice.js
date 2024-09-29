@@ -11,7 +11,7 @@ const movieSlice = createSlice({
       state.moviesList = action.payload;
     },
     setMoviesTrailer: (state, action) => {
-      state.trailer = action.payload;
+      state.moviesTrailer = action.payload;
     },
   },
 });
