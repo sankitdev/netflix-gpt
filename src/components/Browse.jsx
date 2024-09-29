@@ -6,13 +6,17 @@ import BrowseRest from "./BrowseRest";
 import Footer from "./Footer";
 const Browse = () => {
   useMovieFetch();
+  const nowPlayingMovies = useSelector(
+    (store) => store.movieData.nowPlayingList
+  );
   const movieList = useSelector((store) => store.movieData);
-  console.log(movieList);
+  if (!nowPlayingMovies) return;
+  const { original_title, overview, id } = nowPlayingMovies[0];
   return (
-    <div className="h-screen">
+    <div className="h-screen w-full">
       <Header />
-      <BrowseHero />
-      <BrowseRest />
+      <BrowseHero title={original_title} overview={overview} movieId={id} />
+      <BrowseRest movieData={movieList} />
       <Footer />
     </div>
   );
