@@ -50,7 +50,7 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full absolute z-10 px-8 md:px-32 mt-4 flex justify-between items-center ">
+    <div className="w-full absolute z-20 px-8 md:px-20 mt-4 flex justify-between items-center ">
       <Link to={"/"}>
         <img src={Logo} alt="Netflix Logo" className="w-28 md:w-44" />
       </Link>
