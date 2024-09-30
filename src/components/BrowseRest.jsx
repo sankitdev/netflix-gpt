@@ -18,12 +18,12 @@ const BrowseRest = ({ movieData }) => {
 };
 
 BrowseRest.propTypes = {
-  movieData: PropTypes.arrayOf(
-    PropTypes.shape({
-      original_title: PropTypes.string.isRequired,
-      poster_path: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  movieData: PropTypes.shape({
+    nowPlayingList: PropTypes.array.isRequired,
+    popularMoviesList: PropTypes.array.isRequired,
+    topRatedList: PropTypes.array.isRequired,
+    upComingList: PropTypes.array.isRequired,
+  }).isRequired,
 };
 
 export default BrowseRest;
