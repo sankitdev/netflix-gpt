@@ -20,9 +20,6 @@ const useMovieFetch = () => {
       movies.upComingList
     )
       return;
-
-    console.log("fetching Data");
-
     try {
       const fetchMovies = movieUrls.map(async (category) => {
         const response = await fetch(
@@ -33,7 +30,6 @@ const useMovieFetch = () => {
         return { category, data: data.results };
       });
       const results = await Promise.all(fetchMovies);
-      console.log(results);
       results.forEach(({ category, data }) => {
         switch (category) {
           case "now_playing":
