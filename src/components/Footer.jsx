@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-black text-gray-300 pb-12">
+    <footer className="bg-black text-gray-300 py-10">
       <div className="container mx-auto text-center">
         <p className="text-sm mb-2">
           © {new Date().getFullYear()} Netflix Clone by Ankit Singh. All Rights

@@ -23,7 +23,7 @@ const Login = () => {
     HandleLogin(signUp, setErrorMessage, message, email, pass);
   };
   return (
-    <div className="relative mx-auto top-36 w-4/5 lg:w-2/5 p-10 md:p-16  bg-black bg-opacity-50">
+    <div className="relative mx-auto top-36 w-4/5 lg:w-2/5 p-10 md:p-16 bg-black bg-opacity-50">
       <h1 className="text-4xl font-bold mb-5">
         {signUp ? "Sign Up" : "Sign In"}
       </h1>
