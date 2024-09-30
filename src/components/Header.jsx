@@ -63,7 +63,7 @@ const Header = () => {
             className="w-8 h-8 rounded-full mr-4"
           />
           <Button
-            styles={"px-4 py-1"}
+            styles={"px-2 md:px-4 py-1 text-sm md:text-lg"}
             text={"Sign Out"}
             onClick={handleSignOut}
           />
@@ -72,7 +72,10 @@ const Header = () => {
         // If user is not logged in and on home page, show Sign In button
         pathname === "/" && (
           <Link to={"/login"}>
-            <Button styles={"px-4 py-1"} text={"Sign In"} />
+            <Button
+              styles={"px-2 md:px-4 py-1 text-sm md:text-lg"}
+              text={"Sign In"}
+            />
           </Link>
         )
       )}
