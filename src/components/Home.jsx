@@ -1,9 +1,16 @@
 import { bgImg } from "../utils/Constant";
 import Header from "./Header";
 import HomePage from "./HomePage";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Login from "./Login";
+import useMovieFetch from "../hooks/useMovieFetch";
+import { useSelector } from "react-redux";
+import MovieCards from "./MovieCards";
+import Footer from "./Footer";
+import Button from "./ui/Button";
 const Home = () => {
+  useMovieFetch();
+  const nowPlaying = useSelector((store) => store.movieData.nowPlayingList);
   const { pathname } = useLocation();
   return (
     <>
@@ -27,11 +34,17 @@ const Home = () => {
         {pathname !== "/login" && (
           <>
             <div className="h-1 bg-gradient-custom"></div>
-            <div className=" h-[calc(100vh-80%)] bg-gradient-to-b from-blue-950 to-black opacity-100 px-8 md:px-32 pt-4">
-              <h1>Trending Now</h1>
+            <div className="h-full bg-gradient-to-b from-blue-950 to-black opacity-100 text-center px-8 md:px-32 pt-4">
+              {nowPlaying && (
+                <MovieCards title={"Now Playing"} movieData={nowPlaying} />
+              )}
+              <Link to={"/login"}>
+                <Button text={"Explore More"} styles={"px-5 py-2 mt-10"} />
+              </Link>
             </div>
           </>
         )}
+        <Footer />
       </div>
     </>
   );
