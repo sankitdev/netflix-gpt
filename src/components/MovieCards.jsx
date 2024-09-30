@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { POSTER_IMG_URL } from "../utils/Constant";
 const MovieCards = ({ movieData, title }) => {
   return (
-    <div className="my-10">
+    <div className="my-5">
       <h1 className="text-2xl font-bold py-5 px-10 ">{title}</h1>
       <div className="flex gap-5 px-10 overflow-x-auto scrollbar-hide">
         {movieData.map((items) => (
