@@ -20,11 +20,8 @@ const Search = () => {
     } else {
       alert("Enter prompt to get recommendation");
     }
-    searchText === "";
   };
   const movieData = useSelector((store) => store.movieData.gptMovies);
-
-  // console.log(movieData && movieData[0]);
   return (
     <div className="h-screen relative overflow-auto">
       <div className="relative z-30">
@@ -39,12 +36,12 @@ const Search = () => {
           <input
             type="text"
             ref={inputval}
-            className="w-4/5 md:w-1/2 py-2 md:py-3 px-2 rounded-md text-gray-500"
+            className="w-4/5 md:w-1/2 py-3 px-2 rounded-md text-gray-500"
             placeholder="Write prompt for your movies..."
           />
           <Button
             text={"Search"}
-            styles={"px-3 py-2 mt-3 md:px-6 ml-2"}
+            styles={"px-3 py-2 mt-3 sm:mt-0 sm:py-3 md:px-6 ml-2"}
             onClick={handleSearch}
           />
         </div>
@@ -54,7 +51,6 @@ const Search = () => {
             movieData.map((movies, index) => (
               <MovieCards key={index} movieData={movies} title={"Search"} />
             ))}
-          {/* {movieData && <MovieCards movieData={movieData} title={"Search"} />} */}
         </div>
       </div>
     </div>
