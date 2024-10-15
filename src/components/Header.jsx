@@ -52,28 +52,30 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full absolute z-20 px-8 md:px-20 mt-4 flex justify-between items-center ">
+    <div className="w-full absolute z-20 px-5 md:px-20 mt-4 flex justify-between items-center ">
       <Link to={"/"}>
         <img src={Logo} alt="Netflix Logo" className="w-28 md:w-44" />
       </Link>
       {user ? (
         // If user is logged in, show profile and Sign Out button
         <div className="flex items-center ">
-          <Link to={"/search"}>
-            <Button
-              styles={
-                "mr-2 py-1 px-2 bg-transparent border-2 border-white hover:bg-black hover:bg-opacity-80 hover:scale-105 hover:transition-all hover:duration-300"
-              }
-              text={"Search"}
-            />
-          </Link>
+          {pathname !== "/search" && (
+            <Link to={"/search"}>
+              <Button
+                styles={
+                  "mr-2 py-1 px-2 bg-transparent border-2 border-white hover:bg-black hover:bg-opacity-80 hover:scale-105 hover:transition-all hover:duration-300"
+                }
+                text={"Search"}
+              />
+            </Link>
+          )}
           <img
             src={user.photoURL}
             alt={user.displayName}
             className="w-8 h-8 rounded-full mr-4"
           />
           <Button
-            styles={"px-2 py-1 text-md"}
+            styles={"px-2 py-2 text-sm md:text-md"}
             text={"Sign Out"}
             onClick={handleSignOut}
           />

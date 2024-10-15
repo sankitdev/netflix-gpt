@@ -35,19 +35,20 @@ const Search = () => {
         className={`h-full w-full bg-cover bg-center`}
         style={{ backgroundImage: `url(${bgImg})` }}
       >
-        <div className="relative z-20 flex justify-center pt-20 pb-5 w-full">
+        <div className="relative z-20 flex flex-col sm:flex-row items-center justify-center pt-24 pb-5 w-full">
           <input
             type="text"
             ref={inputval}
-            className="w-4/5 md:w-1/2 py-3 px-2 rounded-md text-gray-500"
+            className="w-4/5 md:w-1/2 py-2 md:py-3 px-2 rounded-md text-gray-500"
             placeholder="Write prompt for your movies..."
           />
           <Button
             text={"Search"}
-            styles={"px-3 md:px-6 ml-2"}
+            styles={"px-3 py-2 mt-3 md:px-6 ml-2"}
             onClick={handleSearch}
           />
         </div>
+
         <div className="relative z-20 w-full mx-auto h-full overflow-y-scroll bg-black bg-opacity-30">
           {movieData?.length > 0 &&
             movieData.map((movies, index) => (
