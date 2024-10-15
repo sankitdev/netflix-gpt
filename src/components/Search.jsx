@@ -1,19 +1,23 @@
 import { bgImg } from "../utils/Constant";
 import Button from "./ui/Button";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Header from "./Header";
 import gptMovieSearch from "../utils/gptMovieSearch";
 import { useDispatch } from "react-redux";
 import MovieCards from "./MovieCards";
 import { useSelector } from "react-redux";
+import ShimmerMovieCards from "./ui/Shimmer";
 const Search = () => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const inputval = useRef();
   const handleSearch = async () => {
     const searchText = inputval?.current?.value.trim();
     if (searchText) {
       try {
+        setLoading(!loading);
         await gptMovieSearch(searchText, dispatch);
+        setLoading(!loading);
       } catch (error) {
         console.error("Error in gathering response", error);
       }
@@ -45,12 +49,16 @@ const Search = () => {
             onClick={handleSearch}
           />
         </div>
-
         <div className="relative z-20 w-full mx-auto h-full overflow-y-scroll bg-black bg-opacity-30">
-          {movieData?.length > 0 &&
+          {movieData ? (
             movieData.map((movies, index) => (
               <MovieCards key={index} movieData={movies} title={"Search"} />
-            ))}
+            ))
+          ) : loading ? (
+            <ShimmerMovieCards />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
