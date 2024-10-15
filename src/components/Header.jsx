@@ -14,6 +14,7 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.userData);
   useEffect(() => {
+    const allowedPath = ["/browse", "/search"];
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       // console.log("Auth State Changed:", user);
       if (user) {
@@ -28,7 +29,8 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
-        navigate("/browse");
+        if (allowedPath.includes(pathname)) navigate(pathname);
+        else navigate("/browse");
       } else {
         // User is signed out
         if (pathname !== "/" && pathname !== "/login") {
@@ -56,14 +58,22 @@ const Header = () => {
       </Link>
       {user ? (
         // If user is logged in, show profile and Sign Out button
-        <div className="flex items-center">
+        <div className="flex items-center ">
+          <Link to={"/search"}>
+            <Button
+              styles={
+                "mr-2 py-1 px-2 bg-transparent border-2 border-white hover:bg-black hover:bg-opacity-80 hover:scale-105 hover:transition-all hover:duration-300"
+              }
+              text={"Search"}
+            />
+          </Link>
           <img
             src={user.photoURL}
             alt={user.displayName}
             className="w-8 h-8 rounded-full mr-4"
           />
           <Button
-            styles={"px-2 md:px-4 py-1 text-sm md:text-lg"}
+            styles={"px-2 py-1 text-md"}
             text={"Sign Out"}
             onClick={handleSignOut}
           />

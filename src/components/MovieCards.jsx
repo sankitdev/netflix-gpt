@@ -12,7 +12,7 @@ const MovieCards = ({ movieData, title }) => {
               alt={items.original_title}
               className="w-52 h-64 sm:h-80 object-cover hover:scale-95 transition-all duration-150 ease-in"
             />
-            <div className="text-center mt-2">
+            <div className="text-center mt-1">
               <h1 className="text-lg font-semibold truncate w-52">
                 {items.original_title}
               </h1>
