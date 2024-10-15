@@ -19,3 +19,7 @@ export const bgImg =
 export const ErrorImg =
   "https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif";
 export const POSTER_IMG_URL = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
+
+// other constants
+export const promptText =
+  "Act as a movie recommendation system where you have to recommend 5 best movies for the query. Give me the name of the movies only in the format I specified in example. Example - movie1, movie2, movie3, movie4, movie5";
