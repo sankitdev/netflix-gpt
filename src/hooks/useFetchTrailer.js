@@ -7,7 +7,6 @@ const useFetchTrailer = (movieId) => {
   const trailer = useSelector((store) => store.movieData.moviesTrailer);
   useEffect(() => {
     const fetchTrailer = async () => {
-      console.log("test2");
       if (trailer && trailer.length > 0) return;
       if (!movieId) return;
       try {
