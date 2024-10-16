@@ -1,5 +1,6 @@
 # Netflix GPT
 
+<img src="./netflix.png">
 Netflix GPT is a single-page web application that allows users to explore movies from the TMDB API, while offering AI-powered content generation through GPT. The app leverages React for the frontend, Redux for state management, and Firebase for authentication.
 
 ## Features
